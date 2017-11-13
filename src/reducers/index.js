@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
 import { 
     REQUEST_BOOKS,
-    RECEIVE_BOOKS
+    RECEIVE_BOOKS,
+    CHECK_LOGIN
 } from '../actions'
 
 
@@ -31,9 +32,23 @@ const booksWrapper = (state = initialState, action) => {
     }
 }
 
+const userWrapper = (state = {}, action) => {
+    switch (action.type){
+        case CHECK_LOGIN:
+            return {
+                logged: true,
+                userInfo: action.userInfo
+            }
+
+        default:
+            return state
+    }
+}
+
 // rootReducers is a normal reducers build with list of reducers
 const rootReducers = combineReducers({
-    booksWrapper
+    booksWrapper,
+    userWrapper
 })
 
 export default rootReducers

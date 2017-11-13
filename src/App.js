@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import GiuseppeApp from './components/GiuseppeApp';
+import UserBar from './components/UserBar/UserBar';
 
 class App extends Component {
 
   render() {
     return (
-      <GiuseppeApp />
+      <div>
+        <UserBar/>
+      </div>
     );
   }
 }

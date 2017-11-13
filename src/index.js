@@ -9,7 +9,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import configureStore from './configureStore';
 
-let store = configureStore()
+let myStore = configureStore()
 
 const Root = ({ store }) => (
     <Provider store={store}>
@@ -20,6 +20,6 @@ const Root = ({ store }) => (
   )
 
 ReactDOM.render(
-    <Root/>
+    <Root store={myStore}/>
     , document.getElementById('root'));
 registerServiceWorker();
