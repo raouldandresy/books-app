@@ -1,4 +1,37 @@
+$grey500: #9E9E9E;
+$pink500: #E91E63;
+
 .userbar {
-    height: 96px;
-    border-bottom: 2px solid red;
+    height: 82px;
+    border-bottom: 2px solid $grey500;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.userbar__logo {
+    height: 100%;
+}
+
+.userbar__search {
+    margin-inline-start: 52px;
+
+    input {
+        font-size: 22px!important;
+    }
+}
+
+.userbar__action {
+    display: flex;
+    
+    h2 {
+        margin: 16px;
+        font-size: 22px;
+        color: $grey500;
+        transition: .5s color; 
+
+        &:hover {
+            color: $pink500;
+        }
+    }
 }
