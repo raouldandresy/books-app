@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 import { 
     REQUEST_BOOKS,
     RECEIVE_BOOKS,
-    CHECK_LOGIN
+    CHECK_LOGIN,
+    LOGIN_SUCCES
 } from '../actions'
 
 
@@ -32,12 +33,24 @@ const booksWrapper = (state = initialState, action) => {
     }
 }
 
-const userWrapper = (state = {}, action) => {
+const initialUserState = {
+    logged: false,
+    userInfo: {}
+}
+
+const userWrapper = (state = initialUserState, action) => {
+
     switch (action.type){
         case CHECK_LOGIN:
             return {
                 logged: true,
                 userInfo: action.userInfo
+            }
+        
+        case LOGIN_SUCCES: 
+            return {
+                logged: true,
+                userInfo: action.appUser
             }
 
         default:

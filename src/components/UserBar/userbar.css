@@ -14,7 +14,8 @@
     font-size: 22px !important; }
 
 .userbar__action {
-  display: flex; }
+  display: flex;
+  align-items: center; }
   .userbar__action h2 {
     margin: 16px;
     font-size: 22px;

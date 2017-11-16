@@ -3,7 +3,8 @@ import './userbar.css'
 import { connect } from 'react-redux'
 import { checkLogin } from '../../actions'
 import logo from '../../assets/svg/logo.svg'
-import TextField from 'material-ui/TextField';
+import TextField from 'material-ui/TextField'
+import Avatar from 'material-ui/Avatar'
 
 class UserBar extends Component {
     
@@ -12,23 +13,45 @@ class UserBar extends Component {
   }
   
   render() {
+
     return (
       <div className="userbar">
         <img src={logo} className="userbar__logo"/>   
         <TextField className="userbar__search" hintText="A books' s title" />   
 
         <div className="userbar__action">
-          <h2>Accedi</h2>
+          <h2 onClick={this.handleLoginClick.bind(this)}>Accedi</h2>
           <h2>Registrati</h2>
+          {this.renderProfileImage()}
         </div>
       </div>
     );
   }
 
-  loginFb(){
+  renderProfileImage(){
+    if(this.props.logged && this.props.userInfo){
+      return (
+        <Avatar
+            src={this.props.userInfo.img}
+            size={64}
+        />
+      )
+    }
+  }
+
+  handleLoginClick(){
     this.props.checkLogin()
   }
 }
+
+const mapStateToProps = (state) => {
+
+    const { userInfo, logged } = state.userWrapper
+    return {
+      userInfo,
+      logged
+    }
+  }
  
 const mapDispatchToProps = (dispatch) => {
   
@@ -38,4 +61,4 @@ const mapDispatchToProps = (dispatch) => {
   }
   
   
-export default connect(undefined, mapDispatchToProps)(UserBar)
+export default connect(mapStateToProps, mapDispatchToProps)(UserBar)
