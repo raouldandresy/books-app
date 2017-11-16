@@ -8,9 +8,11 @@ import './App.css'
 import fire from './firebase'
 import { silentLogin, catchLogout } from './actions'
 import { connect } from 'react-redux'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 // components
 import HomeDescription from './components/HomeDescription'
+import Profile from './components/Profile'
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -33,12 +35,15 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-        <div>
-          <UserBar/>
-          <section id="main">
-            <HomeDescription/>
-          </section>
-        </div>
+        <BrowserRouter>
+          <div className="App">
+            <UserBar />
+            {/* <Route exact="/" component={HomeDescription}/>  SECTION MAIN */}
+            <Route path="/profile" component={Profile}/>
+
+            {/* <Footer /> */}
+          </div>
+        </BrowserRouter>
       </MuiThemeProvider>
     );
   }

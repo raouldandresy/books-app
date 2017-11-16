@@ -13,9 +13,7 @@ let myStore = configureStore()
 
 const Root = ({ store }) => (
     <Provider store={store}>
-      <BrowserRouter>
-        <Route path="/:filter?" component={App} />
-      </BrowserRouter>
+      <App />
     </Provider>
   )
 
@@ -23,3 +21,5 @@ ReactDOM.render(
     <Root store={myStore}/>
     , document.getElementById('root'));
 registerServiceWorker();
+
+// REACT ROUTER V4 :) PIANGETE https://medium.com/@dkerrious/react-router-v4-1b04ec250c24
