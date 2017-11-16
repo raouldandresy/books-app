@@ -1,0 +1,11 @@
+.home-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .home-description .contents {
+    display: flex; }
+  .home-description .content {
+    flex: 1;
+    margin: 12px;
+    max-width: 200px; }

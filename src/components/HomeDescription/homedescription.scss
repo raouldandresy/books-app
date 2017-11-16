@@ -1,0 +1,19 @@
+$cyan500: #00BCD4;
+
+.home-description {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .contents {
+        display: flex;
+    }
+    
+    .content {
+        flex: 1;
+        margin: 12px;
+        max-width: 200px;
+    }
+}

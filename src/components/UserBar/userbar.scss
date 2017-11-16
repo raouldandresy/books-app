@@ -1,5 +1,5 @@
 $grey500: #9E9E9E;
-$pink500: #E91E63;
+$cyan500: #00BCD4;
 
 .userbar {
     height: 82px;
@@ -31,7 +31,7 @@ $pink500: #E91E63;
         transition: .5s color; 
 
         &:hover {
-            color: $pink500;
+            color: $cyan500;
         }
     }
 }
