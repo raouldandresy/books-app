@@ -7,6 +7,8 @@ $cyan500: #00BCD4;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .userbar__logo {
@@ -17,17 +19,18 @@ $cyan500: #00BCD4;
     margin-inline-start: 52px;
 
     input {
-        font-size: 22px!important;
+        font-size: 18px!important;
     }
 }
 
 .userbar__action {
     display: flex;
     align-items: center;
+    margin-left: auto;
     
     h2 {
-        margin: 16px;
-        font-size: 22px;
+        margin: 10px;
+        font-size: 18px;
         color: $grey500;
         transition: .5s color; 
 

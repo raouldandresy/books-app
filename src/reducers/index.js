@@ -3,7 +3,8 @@ import {
     REQUEST_BOOKS,
     RECEIVE_BOOKS,
     CHECK_LOGIN,
-    LOGIN_SUCCES
+    LOGIN_SUCCES,
+    CATCH_LOGOUT
 } from '../actions'
 
 
@@ -35,7 +36,7 @@ const booksWrapper = (state = initialState, action) => {
 
 const initialUserState = {
     logged: false,
-    userInfo: {}
+    userInfo: null
 }
 
 const userWrapper = (state = initialUserState, action) => {
@@ -43,7 +44,7 @@ const userWrapper = (state = initialUserState, action) => {
     switch (action.type){
         case CHECK_LOGIN:
             return {
-                logged: true,
+                logged: false,
                 userInfo: action.userInfo
             }
         
@@ -51,6 +52,12 @@ const userWrapper = (state = initialUserState, action) => {
             return {
                 logged: true,
                 userInfo: action.appUser
+            }
+
+        case CATCH_LOGOUT:
+            return {
+                logged: false,
+                userInfo: null
             }
 
         default:

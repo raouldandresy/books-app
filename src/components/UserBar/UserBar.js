@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './userbar.css'
 import { connect } from 'react-redux'
-import { checkLogin } from '../../actions'
+import { checkLogin, silentLogin, checkLogout } from '../../actions'
 import logo from '../../assets/svg/logo.svg'
 import TextField from 'material-ui/TextField'
 import Avatar from 'material-ui/Avatar'
+import fire from '../../firebase'
 
 class UserBar extends Component {
     
@@ -13,34 +14,43 @@ class UserBar extends Component {
   }
   
   render() {
+    
+    const actionsComp = this.props.userInfo ? this.renderLoggedActions() : this.renderGuestActions()
 
     return (
       <div className="userbar">
         <img src={logo} className="userbar__logo"/>   
         <TextField className="userbar__search" hintText="A books' s title" />   
-
-        <div className="userbar__action">
-          <h2 onClick={this.handleLoginClick.bind(this)}>Accedi</h2>
-          <h2>Registrati</h2>
-          {this.renderProfileImage()}
-        </div>
+        {actionsComp}
       </div>
     );
   }
 
-  renderProfileImage(){
-    if(this.props.logged && this.props.userInfo){
-      return (
-        <Avatar
-            src={this.props.userInfo.img}
-            size={64}
-        />
-      )
-    }
+  renderLoggedActions(){
+    return (
+      <div className="userbar__action">
+        <h2 onClick={this.handleLogoutClick.bind(this)}>Logout</h2>
+        <h2>Profilo</h2>
+        <Avatar src={this.props.userInfo.img} size={52} />
+      </div>
+    ) 
+  }
+
+  renderGuestActions(){
+    return (
+      <div className="userbar__action">
+        <h2 onClick={this.handleLoginClick.bind(this)}>Accedi</h2>
+        <h2>Registrati</h2>
+      </div>
+    )
   }
 
   handleLoginClick(){
     this.props.checkLogin()
+  }
+
+  handleLogoutClick(){
+    this.props.checkLogout()
   }
 }
 
@@ -56,7 +66,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   
     return ({
-      checkLogin: () => { dispatch(checkLogin()) }
+      checkLogin: () => { dispatch(checkLogin()) },
+      silentLogin: () => { dispatch(silentLogin()) },
+      checkLogout: () => { dispatch(checkLogout()) }
     })
   }
   
