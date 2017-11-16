@@ -6,6 +6,7 @@ import logo from '../../assets/svg/logo.svg'
 import TextField from 'material-ui/TextField'
 import Avatar from 'material-ui/Avatar'
 import fire from '../../firebase'
+import { Link } from 'react-router-dom'
 
 class UserBar extends Component {
     
@@ -30,7 +31,7 @@ class UserBar extends Component {
     return (
       <div className="userbar__action">
         <h2 onClick={this.handleLogoutClick.bind(this)}>Logout</h2>
-        <h2>Profilo</h2>
+        <h2><Link className="profile__link" to="/profile">Profilo</Link></h2>
         <Avatar src={this.props.userInfo.img} size={52} />
       </div>
     ) 
