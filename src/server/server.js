@@ -8,6 +8,8 @@ var http     = require('http'),
     mysql    = require('mysql')
     parser   = require('body-parser');
 
+var addBook  = require('./addBook.js');
+
 // Database Connection
 var connection = mysql.createConnection({
     host     : 'localhost',
@@ -43,6 +45,8 @@ app.get('/api/getBooks', function (req, res) {
         }
     })
 });
+
+app.post('/api/addBook', function(err,res){ addBook(err, res, connection) });
 
 // Create server
 http.createServer(app).listen(app.get('port'), function(){
