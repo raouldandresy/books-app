@@ -13,6 +13,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 // components
 import HomeDescription from './components/HomeDescription'
 import Profile from './components/Profile'
+import InsertBook from './components/InsertBook'
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -39,8 +40,10 @@ class App extends Component {
           <div className="App">
             <UserBar />
             {/* <Route exact="/" component={HomeDescription}/>  SECTION MAIN */}
-            <Route path="/profile" component={Profile}/>
-
+            <div id="main">
+              <Route path="/profile" component={Profile}/>
+              <Route path="/insertbook" component={InsertBook}/>
+            </div>
             {/* <Footer /> */}
           </div>
         </BrowserRouter>

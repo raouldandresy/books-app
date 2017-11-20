@@ -1,0 +1,5 @@
+#insertBookWrapper {
+  padding: 1em; }
+  #insertBookWrapper form#insertBookWrapper {
+    display: flex;
+    flex-direction: column; }
