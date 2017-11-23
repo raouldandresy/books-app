@@ -9,12 +9,13 @@ import fire from './firebase'
 import { silentLogin, catchLogout } from './actions'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
+import CardExpandable from './components/Card';
 
 // components
 import HomeDescription from './components/HomeDescription'
 import Profile from './components/Profile'
 import InsertBook from './components/InsertBook'
-import GetBooks from './components/GetBook'
+import GetBooks from './components/GetBooks'
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -46,6 +47,7 @@ class App extends Component {
               <Route path="/profile" component={Profile}/>
               <Route path="/insertbook" component={InsertBook}/>
               <Route path="/getbook" component={GetBooks}/>
+              <CardExpandable />
             </div>
             {/* <Footer /> */}
           </div>
