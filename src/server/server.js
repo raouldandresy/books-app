@@ -1,12 +1,12 @@
 // read on http://sgeek.org/create-restful-api-using-node-js-express-and-mysql/
 // Basic Setup
 // install xampp - set root as db and create db called booksapp. 
-// send my an email so I send you dump of this fucking db
+// send me an email so I send you dump of this fucking db
 
-var http     = require('http'),
-    express  = require('express'),
-    mysql    = require('mysql')
-    parser   = require('body-parser');
+const http     = require('http');
+const express  = require('express');
+const mysql    = require('mysql');
+const parser   = require('body-parser');
 
 var addBook  = require('./addBook.js');
 
@@ -23,7 +23,6 @@ try {
 } catch(e) {
     console.log('Database Connetion failed:' + e);
 }
-
 
 // Setup express
 var app = express();

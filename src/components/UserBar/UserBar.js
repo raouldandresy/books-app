@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './userbar.css'
+import './userbar.scss'
 import { connect } from 'react-redux'
 import { checkLogin, silentLogin, checkLogout } from '../../actions'
 import logo from '../../assets/svg/logo.svg'

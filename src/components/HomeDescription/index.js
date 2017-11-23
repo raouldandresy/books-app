@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './homedescription.css'
+import './homedescription.scss'
 import {Card,CardText,CardTitle} from 'material-ui/Card';
 
 export default class HomeDescription extends Component {

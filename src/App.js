@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import {cyan500} from 'material-ui/styles/colors';
-import './App.css'
+import './App.scss'
 import fire from './firebase'
 import { silentLogin, catchLogout } from './actions'
 import { connect } from 'react-redux'
@@ -14,7 +14,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import HomeDescription from './components/HomeDescription'
 import Profile from './components/Profile'
 import InsertBook from './components/InsertBook'
-import GetBooks from './components/GetBook'
+import GetBooks from './components/GetBooks'
 
 const muiTheme = getMuiTheme({
   palette: {
