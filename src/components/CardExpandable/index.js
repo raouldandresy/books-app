@@ -1,33 +1,37 @@
 import React from 'react';
-import Card from 'material-ui/lib/card/card';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardMedia from 'material-ui/lib/card/card-media';
-import CardTitle from 'material-ui/lib/card/card-title';
-import FlatButton from 'material-ui/lib/flat-button';
-import CardText from 'material-ui/lib/card/card-text';
-import Toggle from 'material-ui/lib/toggle';
+import Card from 'material-ui/Card/Card';
+import CardActions from 'material-ui/Card/CardActions';
+import CardHeader from 'material-ui/Card/CardHeader';
+import CardMedia from 'material-ui/Card/CardMedia';
+import CardTitle from 'material-ui/Card/CardTitle';
+import FlatButton from 'material-ui/FlatButton';
+import CardText from 'material-ui/Card/CardText';
+import Toggle from 'material-ui/Toggle';
 import { connect } from 'react-redux'
+import PopupNeedLogin from '../PopupNeedLogin'
+import * as injectTapEventPlugin from 'react-tap-event-plugin';
 
 class CardExpandable extends React.Component {
 
+
   constructor(props) {
     super(props);
+    injectTapEventPlugin();
     this.state = {
       expanded: false,
-      count : null
+      count : 0
     };
   }
 
-  handleExpandChange = (expanded) => {
-    fetch('/api/countBooks').then(function(response) {
+  componentDidMount(){
+    fetch('http://localhost:5000/api/countBooks').then(function(response) {
         var contentType = response.headers.get("content-type");
         if(contentType && contentType.includes("application/json")) {
           return response.json();
         }
         throw new TypeError("Oops, we haven't got JSON!");
       })
-      .then(function(count) { this.setState({count:count}) }.bind(this))
+      .then(function(count) {debugger; this.setState({count:count.length}) }.bind(this))
       .catch(function(error) { console.log(error); });
   };
 
@@ -44,8 +48,12 @@ class CardExpandable extends React.Component {
   };
 
   render() {
+
+    if(!this.props.logged)
+       return <PopupNeedLogin />
+
     return (
-      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+      <Card expanded={this.state.expanded}>
         <CardHeader
           title={this.props.userInfo.name}
           subtitle="Subtitle"
@@ -64,6 +72,7 @@ class CardExpandable extends React.Component {
         </CardMedia>
         <CardTitle title="Card title" subtitle="Card subtitle" expandable={true} />
         <CardText expandable={true}>
+        Libri inseriti dagli utenti: 
           {this.state.count}
         </CardText>
         <CardActions>
@@ -76,7 +85,6 @@ class CardExpandable extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    
         const { userInfo, logged } = state.userWrapper
         return {
           userInfo,
@@ -86,4 +94,4 @@ const mapStateToProps = (state) => {
      
       
       
-    export default connect(mapStateToProps,undefined)(CardExpandable)
+    export default connect(mapStateToProps)(CardExpandable)

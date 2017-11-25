@@ -5,7 +5,7 @@
 
 var http     = require('http'),
     express  = require('express'),
-    mysql    = require('mysql')
+    mysql    = require('mysql'),
     parser   = require('body-parser');
 
 var addBook  = require('./addBook.js');
@@ -33,13 +33,13 @@ app.use(parser.urlencoded({ extended: true }));
 app.set('port', process.env.PORT || 5000);
 
 // Set default route
-app.get('/api/getBooks', function (err,req, res) { getBooks(err,res,connection) });
+app.get('/api/getBooks', function (req,res) { getBooks(res,connection) });
 
-app.post('/api/addBook', function(err,res){ addBook(err, res, connection) });
+app.post('/api/addBook', function(err,res){ addBook(res,connection) });
 
-app.get('/api/countBooks',function (err,req, res) {
+app.get('/api/countBooks',function (req,res) {
 
-    connection.query('SELECT COUNT(id) FROM books',function(err, rows, field){
+    connection.query('SELECT COUNT(id) as count FROM books',function(err, rows, field){
         if(!err){
             console.log(rows[0])
             res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');

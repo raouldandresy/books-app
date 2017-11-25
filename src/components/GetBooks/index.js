@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper';
 import './getBooks.css'
 import PopupNeedLogin from '../PopupNeedLogin'
-import server from '../../server/server'
 
 class GetBooks extends Component {
     
@@ -13,7 +12,7 @@ class GetBooks extends Component {
   }
 
   componentDidMount(){
-    fetch('/api/getBooks').then(function(response,error) {
+    fetch('http://localhost:5000/api/getBooks').then(function(response,error) {
         var contentType = response.headers.get("content-type");
         if(contentType && contentType.includes("application/json")) {
           return response.json();
