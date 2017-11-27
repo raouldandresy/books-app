@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper';
-import './getBooks.scss'
+import './getBooks.css'
 import PopupNeedLogin from '../PopupNeedLogin'
 import server from '../../server/server'
 

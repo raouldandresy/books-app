@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper';
-import './insertBook.scss'
+import './insertBook.css'
 import PopupNeedLogin from '../PopupNeedLogin'
 
 class InsertBook extends Component {
