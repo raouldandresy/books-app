@@ -25,6 +25,7 @@
     "start-js": "react-scripts start",
     "node-server": "node src/server/server.js",
     "start": "npm-run-all -p watch-css start-js",
+    "deploy-functions": "firebase deploy --only functions",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
