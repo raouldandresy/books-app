@@ -57,7 +57,7 @@ class UserBar extends Component {
 
 const mapStateToProps = (state) => {
 
-    const { userInfo, logged } = state.userWrapper
+    const { userInfo, logged } = state.userReducer
     return {
       userInfo,
       logged

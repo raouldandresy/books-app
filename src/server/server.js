@@ -5,7 +5,7 @@
 
 var http     = require('http'),
     express  = require('express'),
-    mysql    = require('mysql')
+    mysql    = require('mysql'),
     parser   = require('body-parser');
 
 var addBook  = require('./addBook.js');
@@ -27,18 +27,18 @@ try {
 
 // Setup express
 var app = express();
-app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
+app.use(parser.json());
 app.set('port', process.env.PORT || 5000);
 
 // Set default route
 app.get('/api/getBooks', function (req, res) {
-    
-    var jsonBooks = [];
-    connection.query('SELECT * FROM books',function(err, rows, field){
+
+
+connection.query('SELECT * FROM books',function(err, rows, field){
         if(!err){
             console.log(rows[0])
-            res.setHeader('Content-Type', 'application/json');
+            res.header('Content-Type', 'application/json');
             res.status(200).send(JSON.stringify(rows));
         } else {
             res.status(404).send(err);
@@ -46,7 +46,19 @@ app.get('/api/getBooks', function (req, res) {
     })
 });
 
-app.post('/api/addBook', function(err,res){ addBook(err, res, connection) });
+app.post('/api/addBook', function(req,res){ 
+    console.log(req.body.json)
+    
+    var a;
+    try{
+        a = JSON.parse(Object.keys(req.body)[0])
+    }catch(err){
+        a = req.body
+    }
+    console.log(a);
+    res.header('Content-Type', 'application/json'); 
+    addBook(req, res, connection) 
+});
 
 // Create server
 http.createServer(app).listen(app.get('port'), function(){

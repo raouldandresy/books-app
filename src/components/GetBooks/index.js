@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper';
-import './getBook.css'
+import './getBooks.css'
 import PopupNeedLogin from '../PopupNeedLogin'
-import server from '../../server/server'
 
 class GetBooks extends Component {
     
@@ -40,7 +39,7 @@ class GetBooks extends Component {
 
 const mapStateToProps = (state) => {
     
-        const { userInfo, logged } = state.userWrapper
+        const { userInfo, logged } = state.userReducer
         return {
           userInfo,
           logged

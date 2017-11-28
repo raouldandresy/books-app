@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { tryInsertNewBook } from '../../actions'
 import Paper from 'material-ui/Paper';
 import './insertBook.css'
 import PopupNeedLogin from '../PopupNeedLogin'
@@ -38,16 +39,24 @@ class InsertBook extends Component {
 
   handleSubmit(e){
       e.preventDefault() // avoid refresh page
+      this.props.tryInsertNewBook({ title: 'un titolo', author: 'un autore' })
   }
 }
 
 const mapStateToProps = (state) => {
     
-        const { userInfo, logged } = state.userWrapper
+        const { userInfo, logged } = state.userReducer
         return {
           userInfo,
           logged
         }
 }
 
-export default connect(mapStateToProps)(InsertBook)
+const mapDispatchToProps = (dispatch) => {
+    
+      return ({
+        tryInsertNewBook: (book) => { dispatch(tryInsertNewBook(book)) }
+      })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InsertBook)

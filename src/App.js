@@ -14,7 +14,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import HomeDescription from './components/HomeDescription'
 import Profile from './components/Profile'
 import InsertBook from './components/InsertBook'
-import GetBooks from './components/GetBook'
+import GetBooks from './components/GetBooks'
 
 const muiTheme = getMuiTheme({
   palette: {

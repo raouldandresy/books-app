@@ -7,6 +7,7 @@ export const CHECK_LOGIN = 'CHECK_LOGIN'
 export const LOGIN_SUCCES = 'LOGIN_SUCCES'          // calback
 export const CATCH_LOGOUT = 'CATCH_LOGOUT'          // callback
 export const CHECK_LOGOUT = 'CHECK_LOGOUT'
+export const TRY_INSERT_NEW_BOOK = 'TRY_INSERT_NEW_BOOK'
 
 const requestBooks = () => {
     return {
@@ -51,6 +52,13 @@ const _loginSucces = (user) => {
 const _catchLogout = () => {
     return {
         type: CATCH_LOGOUT
+    }
+}
+
+const _succesInsertNewBook = (book) => {
+    return {
+        type: TRY_INSERT_NEW_BOOK,
+        book
     }
 }
 
@@ -119,5 +127,48 @@ export const checkLogout = () => {
             })
     }
 
+}
+
+export const tryInsertNewBook = (book) => {
+    
+    return (dispatch) => {
+
+        //console.log(book.title,book.author)
+        const payload = {
+            title: "un titolo a caso",
+            author: "un autore a caso"
+        };
+        let data = new FormData();
+        data.append( "json", JSON.stringify(payload));
+        
+        var obj = {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: {
+                'Accept': '*',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            mode : 'no-cors',
+          };
+        return fetch('http://localhost:5000/api/addBook',obj).then(function(response) {
+            
+            const contentType = response.headers.get("content-type");
+            if(contentType && contentType.includes("application/json")){
+                debugger;
+                return response.json();
+            }
+            
+            return response.json();
+            throw new TypeError("Oops, we haven't got JSON!");
+        })
+        .then(function(bookJson) { 
+            debugger
+            dispatch(_succesInsertNewBook(bookJson))
+        }.bind(this))
+        .catch(function(error) {
+            debugger
+            //console.error(error); 
+        }); 
+    }
 }
 
