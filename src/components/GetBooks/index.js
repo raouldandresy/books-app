@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper';
-import './getBook.css'
+import './getBooks.css'
 import PopupNeedLogin from '../PopupNeedLogin'
-import server from '../../server/server'
 
 class GetBooks extends Component {
     
@@ -12,8 +11,16 @@ class GetBooks extends Component {
     this.state={books:[]}
   }
 
-  bookList={
-
+  componentDidMount(){
+    fetch('http://localhost:5000/api/getBooks').then(function(response,error) {
+        var contentType = response.headers.get("content-type");
+        if(contentType && contentType.includes("application/json")) {
+          return response.json();
+        }
+        throw new TypeError("Oops, we haven't got JSON!");
+      })
+      .then(function(books) { this.setState({books:books}) }.bind(this))
+      .catch(function(error) { console.log(error); });
   }
   
   render() {
@@ -21,15 +28,19 @@ class GetBooks extends Component {
     if(!this.props.logged)
         return <PopupNeedLogin />
 
+   let listBooks = this.state.books.map((book) =>
+    <li key={book.id}>
+      {book.title} : {book.author}
+    </li>
+    )
+
     return (
         <Paper zDepth={1} id="getBookWrapper">
             <header>
                 this is header
             </header>
             <ul id="getBooks">
-                <li>
-                    
-                </li>
+               {listBooks}
             </ul>
         </Paper>
     )

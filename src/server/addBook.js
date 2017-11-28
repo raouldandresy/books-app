@@ -24,7 +24,7 @@ module.exports = function addBookHelper(req, res, connection){
 					} else {
 						response = { error: err };
 					}
- 
+					res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 					res.setHeader('Content-Type', 'application/json');
 			    	res.status(200).send(JSON.stringify(response));
 		  		} else {
