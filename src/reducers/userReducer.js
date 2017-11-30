@@ -2,7 +2,7 @@ import {
     CHECK_LOGIN,
     LOGIN_SUCCES,
     CATCH_LOGOUT
-} from '../actions'
+} from '../actions/userAction'
 
 const initialUserState = {
     logged: false,

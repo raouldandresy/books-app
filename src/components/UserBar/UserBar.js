@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './userbar.css'
 import { connect } from 'react-redux'
-import { checkLogin, silentLogin, checkLogout } from '../../actions'
+import { checkLogin, silentLogin, checkLogout } from '../../actions/userAction'
 import logo from '../../assets/svg/logo.svg'
 import TextField from 'material-ui/TextField'
 import Avatar from 'material-ui/Avatar'

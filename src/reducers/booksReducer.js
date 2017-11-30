@@ -1,7 +1,7 @@
 import { 
     REQUEST_BOOKS,
     RECEIVE_BOOKS
-} from '../actions'
+} from '../actions/booksAction'
 
 const initialState = {
     isFetching: false,

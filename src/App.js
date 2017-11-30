@@ -6,7 +6,7 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import {cyan500} from 'material-ui/styles/colors';
 import './App.css'
 import fire from './firebase'
-import { silentLogin, catchLogout } from './actions'
+import { silentLogin, catchLogout } from './actions/userAction'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
 

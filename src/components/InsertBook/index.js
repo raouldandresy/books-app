@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { tryInsertNewBook } from '../../actions'
+import { tryInsertNewBook } from '../../actions/booksAction'
 import Paper from 'material-ui/Paper';
 import './insertBook.css'
 import PopupNeedLogin from '../PopupNeedLogin'
