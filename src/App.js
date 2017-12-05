@@ -9,6 +9,7 @@ import fire from './firebase'
 import { silentLogin, catchLogout } from './actions/userAction'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
+import CardExpandable from './components/CardExpandable';
 
 // components
 import HomeDescription from './components/HomeDescription'
@@ -40,6 +41,7 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             <UserBar />
+            <CardExpandable />
             {/* <Route exact="/" component={HomeDescription}/>  SECTION MAIN */}
             <div id="main">
               <Route path="/home" component={HomeDescription}/>
