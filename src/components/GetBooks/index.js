@@ -35,14 +35,14 @@ class GetBooks extends Component {
     )
 
     return (
-        <Paper zDepth={1} id="getBookWrapper">
+        <div id="getBookWrapper">
             <header>
                 this is header
             </header>
             <ul id="getBooks">
                {listBooks}
             </ul>
-        </Paper>
+        </div>
     )
   }
 
