@@ -17,23 +17,27 @@ class InsertBook extends Component {
         return <PopupNeedLogin />
 
     return (
-        <Paper zDepth={1} id="insertBookWrapper">
+
+        <div id="insertBookWrapper">
+
             <header>
-                this is header
+                <h2>INSERT YOUR BOOK</h2>
             </header>
 
-            <form onSubmit={this.handleSubmit.bind(this)} id="insertBook">
-                <label>
-                    Titolo del libro:
-                    <input ref="inputTitle" type="text"/>
-                </label>
-                <label>
-                    Autore del libro
-                    <input ref="inputAuthor" type="text"/>
-                </label>            
-                <input type="submit" value="Cerca" />
-            </form>
-        </Paper>
+            <Paper zDepth={1}>
+                <form onSubmit={this.handleSubmit.bind(this)} id="insertBook">
+                    <label>
+                        Titolo del libro:
+                        <input ref="inputTitle" type="text"/>
+                    </label>
+                    <label>
+                        Autore del libro
+                        <input ref="inputAuthor" type="text"/>
+                    </label>            
+                    <input type="submit" value="Cerca" />
+                </form>
+            </Paper>
+        </div>
     )
   }
 
