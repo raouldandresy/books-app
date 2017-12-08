@@ -21,7 +21,6 @@ class UserBar extends Component {
     return (
       <div className="userbar">
         <img src={logo} className="userbar__logo"/>   
-        <TextField className="userbar__search" hintText="A books' s title" />   
         {actionsComp}
       </div>
     );

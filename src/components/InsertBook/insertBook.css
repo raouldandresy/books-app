@@ -20,6 +20,9 @@
       #insertBookWrapper .insertBookWrapper--foundedList > LI .info {
         margin: 1em;
         padding-bottom: 1em; }
+        #insertBookWrapper .insertBookWrapper--foundedList > LI .info:hover {
+          opacity: .9;
+          transform: scale(1.05); }
       #insertBookWrapper .insertBookWrapper--foundedList > LI .hoverLayer {
         transition: .5s all;
         width: 100%;
