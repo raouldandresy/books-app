@@ -32,6 +32,12 @@ class App extends Component {
       if (user)
         this.props.silentLogin()
     });
+
+    fetch('http://localhost:3002/books').then(function(response) {
+      return response.json();
+    }).then(function(jsonBooks) {
+      console.log(jsonBooks);
+    });
   }
 
   render() {
