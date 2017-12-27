@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import CircularProgress from 'material-ui/CircularProgress';
 import Paper from 'material-ui/Paper';
 
@@ -26,17 +27,23 @@ export default class FoundedBooksList extends Component {
 
     renderChild(book){
 
+        var paperClasses = classNames({
+            'container': true,
+            'selected': this.props.selectedBookId && this.props.selectedBookId === book.id
+        })
+
         return (
-            <Paper zDepth={1} className="container">
+            <Paper zDepth={1} className={paperClasses} onClick={this.handleClick.bind(this,book)}>
                  <img src={book.thumbnail} alt="" />
                  <div className="info">
                     <h2 className="title">{book.title}</h2>
                     <h2 className="publisher">{book.publisher}</h2>
                  </div>
-                 <div class="hoverLayer">
-                     <h1>SELECT THIS</h1>
-                 </div>
             </Paper>
         )
+    }
+
+    handleClick(book){
+        this.props.handleBookSelected(book.id)
     }
 }

@@ -17,7 +17,8 @@ class InsertBook extends Component {
     state = {
         foundedBooks: [],
         loadingBooks: false,
-        stepIndex: 0
+        stepIndex: 0,
+        selectedBookId: null
     }
 
     constructor(props){
@@ -152,7 +153,15 @@ class InsertBook extends Component {
     }
 
     renderFoundedBooks(){
-        return <FoundedBooksList foundedBooks={this.state.foundedBooks} loadingBooks={this.state.loadingBooks}/>
+        return <FoundedBooksList foundedBooks={this.state.foundedBooks} 
+                                 loadingBooks={this.state.loadingBooks} 
+                                 selectedBookId={this.state.selectedBookId}
+                                 handleBookSelected={this.handleBookSelected.bind(this)}
+                                 />
+    }
+
+    handleBookSelected(bookId){
+        this.setState({ selectedBookId: bookId })
     }
 }
 
