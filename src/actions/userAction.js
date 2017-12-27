@@ -21,9 +21,11 @@ const _checkSilentLoginSessionSucces = (userInfo) => {
 
 const _loginSucces = (user) => {
 
+    const userJson = user.toJSON();
     const appUser = {
-        name: user.displayName,
-        img: user.photoURL
+        name: userJson.displayName,
+        img: userJson.photoURL,
+        uid: userJson.uid
     }
     
     return {

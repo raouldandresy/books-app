@@ -67,6 +67,11 @@ class InsertBook extends Component {
                     primary={true}
                     onClick={this.handleNext}
                     />
+                    <FlatButton
+                    label="Insert"
+                    primary={true}
+                    onClick={this.handleInsert.bind(this)}
+                    />
                 </div>
             </div>
           </div> 
@@ -98,6 +103,34 @@ class InsertBook extends Component {
         if (stepIndex > 0) {
           this.setState({stepIndex: stepIndex - 1});
         }
+    }
+
+    handleInsert = () => {
+
+        const book = this.state.foundedBooks.find(book => book.id === this.state.selectedBookId);
+        const doc = {        
+            book: {
+                id: book.id,
+                title: book.title,
+                authors: book.authors,
+                publisher: book.publisher,
+                thumbnail: book.thumbnail
+            },
+            state: 'AVAILABLE',
+            owner: this.props.userInfo.uid
+        }
+
+        fetch('http://localhost:3002/insertbook', {
+            method: 'post',
+            body: JSON.stringify(doc),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            alert('inser ok, remove this alert');
+        });
     }
 
     renderStepActions(step) {
